@@ -39,11 +39,11 @@ assign o_overflow = o_overflow_r;
 // ---------------------------------------------------------------------------
 // ---- Write your combinational block design here ---- //
 always@(*) begin
-    o_data_w = ;
-    o_overflow_w = ;
-    o_valid_w = ;
-    result_long = ;
-    sum_long = ;
+    o_data_w = 1'b0;
+    o_overflow_w = 1'b0;
+    o_valid_w = 1'b0;
+    result_long = 24'b0;
+    sum_long = 24'b0;
     case(i_inst)
         3'b000: begin // ADD
 
@@ -106,12 +106,15 @@ always@(*) begin
         end
 
         3'b100: begin // BITWISE XNOR
+            o_overflow_w = 1'b0;
 
             o_data_w = ~(i_data_a ^ i_data_b);
         
         end
 
         3'b101: begin // ReLU
+            o_overflow_w = 1'b0;
+
             if(i_data_a[11]) begin
                 o_data_w = 12'b0;
             end else begin
@@ -120,19 +123,28 @@ always@(*) begin
         end
 
         3'b110: begin // Mean
+            o_overflow_w = 1'b0;
             
             o_data_w = (i_data_a + i_data_b) >>> 2;
 
         end
 
         3'b111: begin // Absolute Max
+            o_overflow_w = 1'b0;
 
             if(i_data_b[10:0] > i_data_a[10:0] ) begin
                 o_data_w = i_data_b;
             end else begin
                 o_data_w = i_data_a;
             end        
+        end
 
+        default: begin
+            o_data_w = 1'b0;
+            o_overflow_w = 1'b0;
+            o_valid_w = 1'b0;
+            result_long = 24'b0;
+            sum_long = 24'b0;
         end
     endcase
 end

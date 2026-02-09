@@ -115,6 +115,7 @@ always@(posedge i_clk or negedge i_rst_n) begin
         o_data_r <= 0;
         o_overflow_r <= 0;
         o_valid_r <= 0;
+        accumulator <= 12'b0;
     end else begin
         o_data_r <= o_data_w;
         o_overflow_r <= o_overflow_w;

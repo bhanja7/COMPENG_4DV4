@@ -44,109 +44,121 @@ always@(*) begin
     o_valid_w = 1'b0;
     result_long = 24'b0;
     sum_long = 24'b0;
-    case(i_inst)
-        3'b000: begin // ADD
 
-            // overflow logic
-            result_long = i_data_a + i_data_b;
-            if(result_long[23:12] != {12{result_long[11]}}) begin
-                o_overflow_w = 1'b1;
-            end else begin
-                o_overflow_w = 1'b0;     
+    if(i_valid) begin
+        o_valid = 1'b0;
+        case(i_inst)
+            3'b000: begin // ADD
+                // overflow logic
+                result_long = i_data_a + i_data_b;
+                if(result_long[23:12] != {12{result_long[11]}}) begin
+                    o_overflow_w = 1'b1;
+                end else begin
+                    o_overflow_w = 1'b0;     
+                end
+
+                // arithmetic logic
+                o_data_w = i_data_a + i_data_b;
+                o_valid_w = 1'b1;
             end
 
-            // arithmetic logic
-            o_data_w = i_data_a + i_data_b;
-        end
+            3'b001: begin // SUBTRACT
 
-        3'b001: begin // SUBTRACT
+                // overflow logic
+                result_long = i_data_a - i_data_b;
+                if(result_long[23:12] != {12{result_long[11]}}) begin
+                    o_overflow_w = 1'b1;
+                end else begin
+                    o_overflow_w = 1'b0;     
+                end
 
-            // overflow logic
-            result_long = i_data_a - i_data_b;
-            if(result_long[23:12] != {12{result_long[11]}}) begin
-                o_overflow_w = 1'b1;
-            end else begin
-                o_overflow_w = 1'b0;     
+                // arithmetic logic
+                o_data_w = i_data_a - i_data_b;
+                o_valid_w = 1'b1;
             end
 
-            // arithmetic logic
-            o_data_w = i_data_a - i_data_b;
-        end
+            3'b010: begin // MULTIPLY 
 
-        3'b010: begin // MULTIPLY 
+                // overflow logic
+                result_long = ((i_data_a * i_data_b) + 5'd16) >>> 5; // Adding 2 ^ (5-1) and then truncate 5 LSBs for rounding fraction
+                
+                if(result_long[23:12] != {12{result_long[11]}}) begin
+                    o_overflow_w = 1'b1;
+                end else begin
+                    o_overflow_w = 1'b0;     
+                end
 
-            // overflow logic
-            result_long = ((i_data_a * i_data_b) + 5'd16) >>> 5; // Adding 2 ^ (5-1) and then truncate 5 LSBs for rounding fraction
+                // arithmetic logic
+                o_data_w = result_long[11:0];
+                o_valid_w = 1'b1;
+            end
+
+            3'b011: begin // MAC
+
+                // MAC logic
+                result_long = ((i_data_a * i_data_b) + 5'd16) >>> 5; // Adding 2 ^ (5-1) and then truncate 5 LSBs for rounding fraction
+                sum_long = result_long + accumulator;
+
+                // overflow logic
+                if(result_long[23:12] != {12{result_long[11]}} || sum_long[23:12] != {12{sum_long[11]}}) begin
+                    o_overflow_w = 1'b1;
+                end else begin
+                    o_overflow_w = 1'b0;     
+                end
+
+                // arithmetic logic
+                o_data_w = sum_long[11:0];
+                o_valid_w = 1'b1;
+            end
+
+            3'b100: begin // BITWISE XNOR
+                o_overflow_w = 1'b0;
+
+                o_data_w = ~(i_data_a ^ i_data_b);
+                o_valid_w = 1'b1;
             
-            if(result_long[23:12] != {12{result_long[11]}}) begin
-                o_overflow_w = 1'b1;
-            end else begin
-                o_overflow_w = 1'b0;     
             end
 
-            // arithmetic logic
-            o_data_w = result_long[11:0];
-        end
+            3'b101: begin // ReLU
+                o_overflow_w = 1'b0;
 
-        3'b011: begin // MAC
+                if(i_data_a[11]) begin
+                    o_data_w = 12'b0;
+                end else begin
+                    o_data_w = i_data_a;
+                end
+                o_valid_w = 1'b1;
 
-            // MAC logic
-            result_long = ((i_data_a * i_data_b) + 5'd16) >>> 5; // Adding 2 ^ (5-1) and then truncate 5 LSBs for rounding fraction
-            sum_long = result_long + accumulator;
-
-            // overflow logic
-            if(result_long[23:12] != {12{result_long[11]}} || sum_long[23:12] != {12{sum_long[11]}}) begin
-                o_overflow_w = 1'b1;
-            end else begin
-                o_overflow_w = 1'b0;     
             end
 
-            // arithmetic logic
-            o_data_w = sum_long[11:0];
-        end
+            3'b110: begin // Mean
+                o_overflow_w = 1'b0;
+                
+                o_data_w = (i_data_a + i_data_b) >>> 2;
+                o_valid_w = 1'b1;
 
-        3'b100: begin // BITWISE XNOR
-            o_overflow_w = 1'b0;
-
-            o_data_w = ~(i_data_a ^ i_data_b);
-        
-        end
-
-        3'b101: begin // ReLU
-            o_overflow_w = 1'b0;
-
-            if(i_data_a[11]) begin
-                o_data_w = 12'b0;
-            end else begin
-                o_data_w = i_data_a;
             end
-        end
 
-        3'b110: begin // Mean
-            o_overflow_w = 1'b0;
-            
-            o_data_w = (i_data_a + i_data_b) >>> 2;
+            3'b111: begin // Absolute Max
+                o_overflow_w = 1'b0;
 
-        end
+                if(i_data_b[10:0] > i_data_a[10:0] ) begin
+                    o_data_w = i_data_b;
+                end else begin
+                    o_data_w = i_data_a;
+                end        
+                o_valid_w = 1'b1;
+            end
 
-        3'b111: begin // Absolute Max
-            o_overflow_w = 1'b0;
-
-            if(i_data_b[10:0] > i_data_a[10:0] ) begin
-                o_data_w = i_data_b;
-            end else begin
-                o_data_w = i_data_a;
-            end        
-        end
-
-        default: begin
-            o_data_w = 1'b0;
-            o_overflow_w = 1'b0;
-            o_valid_w = 1'b0;
-            result_long = 24'b0;
-            sum_long = 24'b0;
-        end
-    endcase
+            default: begin
+                o_data_w = 1'b0;
+                o_overflow_w = 1'b0;
+                o_valid_w = 1'b0;
+                result_long = 24'b0;
+                sum_long = 24'b0;
+            end
+        endcase
+    end
 end
 
 

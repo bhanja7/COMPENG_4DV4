@@ -46,7 +46,7 @@ always@(*) begin
     sum_long = 24'b0;
 
     if(i_valid) begin
-        o_valid = 1'b0;
+        o_valid_w = 1'b0;
         case(i_inst)
             3'b000: begin // ADD
                 // overflow logic

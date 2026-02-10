@@ -1,0 +1,11 @@
+xmverilog(64): 24.03-s013: (c) Copyright 1995-2025 Cadence Design Systems, Inc.
+TOOL:	xmverilog	24.03-s013: Started on Feb 09, 2026 at 15:15:17 EST
+ncverilog
+	testbench.v
+	alu.v
+	+define+I0
+	+access+rw
+xmverilog: *W,NCEXDEP: Executable (ncverilog) is deprecated. Use (xmverilog) instead.
+xmverilog: *SE,FILEMIS: Cannot find the provided file testbench.v.
+xmverilog: *SE,FILEMIS: Cannot find the provided file alu.v.
+TOOL:	xmverilog	24.03-s013: Exiting on Feb 09, 2026 at 15:15:18 EST  (total: 00:00:01)

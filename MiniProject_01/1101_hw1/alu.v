@@ -66,10 +66,10 @@ always@(*) begin
 
                 // overflow logic
                 result_long = i_data_a - i_data_b;
-                if(result_long[23:12] != {12{result_long[11]}}) begin
-                    o_overflow_w = 1'b1;
+                if(result_long[23:12] == {12{result_long[11]}}) begin
+                    o_overflow_w = 1'b0;
                 end else begin
-                    o_overflow_w = 1'b0;     
+                    o_overflow_w = 1'b1;     
                 end
 
                 // arithmetic logic
@@ -80,16 +80,18 @@ always@(*) begin
             3'b010: begin // MULTIPLY 
 
                 // overflow logic
-                result_long = ((i_data_a * i_data_b) + 5'd16) >>> 5; // Adding 2 ^ (5-1) and then truncate 5 LSBs for rounding fraction
+                result_long = ((i_data_a * i_data_b)); // Adding 2 ^ (5-1) and then truncate 5 LSBs for rounding fraction
+		result_long = {result_long[23:10], (result_long[9:0] + 5'd16)};
                 
-                if(result_long[23:12] != {12{result_long[11]}}) begin
+                if(result_long[23:17] != {7{result_long[16]}}) begin
                     o_overflow_w = 1'b1;
+
                 end else begin
                     o_overflow_w = 1'b0;     
                 end
 
                 // arithmetic logic
-                o_data_w = result_long[11:0];
+                o_data_w = result_long[16:5];
                 o_valid_w = 1'b1;
             end
 

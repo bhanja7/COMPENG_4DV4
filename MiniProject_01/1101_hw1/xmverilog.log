@@ -1,0 +1,86 @@
+xmverilog(64): 24.03-s013: (c) Copyright 1995-2025 Cadence Design Systems, Inc.
+TOOL:	xmverilog	24.03-s013: Started on Feb 09, 2026 at 23:38:59 EST
+ncverilog
+	testbench.v
+	alu.v
+	+define+I2
+	+access+rw
+xmverilog: *W,NCEXDEP: Executable (ncverilog) is deprecated. Use (xmverilog) instead.
+Recompiling... reason: file './alu.v' is newer than expected.
+	expected: Mon Feb  9 16:59:06 2026
+	actual:   Mon Feb  9 23:38:53 2026
+file: alu.v
+	module worklib.alu:v
+		errors: 0, warnings: 0
+		Caching library 'worklib' ....... Done
+	Elaborating the design hierarchy:
+	Building instance overlay tables: .................... Done
+	Generating native compiled code:
+		worklib.alu:v <0x685f83d9>
+			streams:   5, words:  7404
+	Building instance specific data structures.
+	Loading native compiled code:     .................... Done
+	Design hierarchy summary:
+		                 Instances  Unique
+		Modules:                 2       2
+		Registers:              25      25
+		Scalar wires:            5       -
+		Vectored wires:          4       -
+		Always blocks:           3       3
+		Initial blocks:          6       6
+		Cont. assignments:       0       3
+		Pseudo assignments:      6       -
+		Process Clocks:          1       1
+		Simulation timescale:  1ps
+	Writing initial simulation snapshot: worklib.tb:v
+Loading snapshot worklib.tb:v .................... Done
+xcelium> source /CMC/tools/cadence/XCELIUMMAIN24.03.013_lnx86/tools/xcelium/files/xmsimrc
+xcelium> run
+000000000000101110001111
+Test[          0]: Correct!
+111111110110100010100010
+Test[          1]: Correct!
+000000000111111100001100
+Test[          2]: Correct!
+111111111001110000110100
+Test[          3]: Correct!
+000000000100101100011111
+Test[          4]: Correct!
+111111111100100111101100
+Test[          5]: Correct!
+000000001010100111101011
+Test[          6]: Correct!
+000000000011011001011000
+Test[          7]: Correct!
+111111110011001101100110
+Test[          8]: Correct!
+111111111010001101110110
+Test[          9]: Correct!
+111111110100111010111001
+Test[         10]: Correct!
+111111111101100110000010
+Test[         11]: Correct!
+111111111111000110000010
+Test[         12]: Correct!
+000000000000011100000100
+Test[         13]: Correct!
+111111111111101101001110
+Test[         14]: Correct!
+000010100110010111000010
+Test[         15]: Correct!
+000001001010011100110110
+Test[         16]: Correct!
+000010111111101011010000
+Test[         17]: Correct!
+001100000100110001011100
+Test[         18]: Correct!
+000001011010110101101100
+Test[         19]: Correct!
+Pattern: ./pattern/INST2_I.dat
+----------------------------------------------
+-                 ALL PASS!                  -
+----------------------------------------------
+Simulation complete via $finish(1) at time 360 NS + 0
+./testbench.v:174         $finish;
+xcelium> exit
+TOOL:	xmverilog	24.03-s013: Exiting on Feb 09, 2026 at 23:39:00 EST  (total: 00:00:01)

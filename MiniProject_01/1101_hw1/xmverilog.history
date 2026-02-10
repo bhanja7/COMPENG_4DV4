@@ -1,0 +1,60 @@
+#e1(09Feb2026:15:15:52): source ./xcelium.d/env.d/env.history.09Feb2026_15_15_52
+s1(09Feb2026:15:15:52):  ncverilog testbench.v alu.v +define+I0 +access+rw 
+#e2(09Feb2026:15:17:08): source ./xcelium.d/env.d/env.history.09Feb2026_15_17_08
+s2(09Feb2026:15:17:08):  ncverilog testbench.v alu.v +define+I1 +access+rw 
+#e3(09Feb2026:15:18:48): source ./xcelium.d/env.d/env.history.09Feb2026_15_18_48
+s3(09Feb2026:15:18:48):  ncverilog testbench.v alu.v +define+I0 +access+rw 
+#e4(09Feb2026:15:18:58): source ./xcelium.d/env.d/env.history.09Feb2026_15_18_58
+s4(09Feb2026:15:18:58):  ncverilog testbench.v alu.v +define+I8 +access+rw 
+#e5(09Feb2026:15:19:20): source ./xcelium.d/env.d/env.history.09Feb2026_15_19_20
+s5(09Feb2026:15:19:20):  ncverilog testbench.v alu.v +define+I0 +access+rw 
+#e6(09Feb2026:15:47:47): source ./xcelium.d/env.d/env.history.09Feb2026_15_47_47
+s6(09Feb2026:15:47:47):  ncverilog testbench.v alu.v +define+I0 +access+rw 
+#e7(09Feb2026:15:48:55): source ./xcelium.d/env.d/env.history.09Feb2026_15_48_55
+s7(09Feb2026:15:48:55):  ncverilog testbench.v alu.v +define+I0 +access+rw 
+#e8(09Feb2026:15:49:12): source ./xcelium.d/env.d/env.history.09Feb2026_15_49_12
+s8(09Feb2026:15:49:12):  ncverilog testbench.v alu.v +define+I1 +access+rw 
+#e9(09Feb2026:15:49:17): source ./xcelium.d/env.d/env.history.09Feb2026_15_49_17
+s9(09Feb2026:15:49:17):  ncverilog testbench.v alu.v +define+I2 +access+rw 
+#e10(09Feb2026:16:10:36): source ./xcelium.d/env.d/env.history.09Feb2026_16_10_36
+s10(09Feb2026:16:10:36):  ncverilog testbench.v alu.v +define+I2 +access+rw 
+#e11(09Feb2026:16:12:58): source ./xcelium.d/env.d/env.history.09Feb2026_16_12_58
+s11(09Feb2026:16:12:58):  ncverilog testbench.v alu.v +define+I2 +access+rw 
+#e12(09Feb2026:16:14:55): source ./xcelium.d/env.d/env.history.09Feb2026_16_14_55
+s12(09Feb2026:16:14:55):  ncverilog testbench.v alu.v +define+I2 +access+rw 
+#e13(09Feb2026:16:18:25): source ./xcelium.d/env.d/env.history.09Feb2026_16_18_25
+s13(09Feb2026:16:18:25):  ncverilog testbench.v alu.v +define+I2 +access+rw 
+#e14(09Feb2026:16:20:14): source ./xcelium.d/env.d/env.history.09Feb2026_16_20_14
+s14(09Feb2026:16:20:14):  ncverilog testbench.v alu.v +define+I2 +access+rw 
+#e15(09Feb2026:16:29:12): source ./xcelium.d/env.d/env.history.09Feb2026_16_29_12
+s15(09Feb2026:16:29:12):  ncverilog testbench.v alu.v +define+I2 +access+rw 
+#e16(09Feb2026:16:30:23): source ./xcelium.d/env.d/env.history.09Feb2026_16_30_23
+s16(09Feb2026:16:30:23):  ncverilog testbench.v alu.v +define+I2 +access+rw 
+#e17(09Feb2026:16:30:57): source ./xcelium.d/env.d/env.history.09Feb2026_16_30_57
+s17(09Feb2026:16:30:57):  ncverilog testbench.v alu.v +define+I1 +access+rw 
+#e18(09Feb2026:16:31:05): source ./xcelium.d/env.d/env.history.09Feb2026_16_31_05
+s18(09Feb2026:16:31:05):  ncverilog testbench.v alu.v +define+I2 +access+rw 
+#e19(09Feb2026:16:32:21): source ./xcelium.d/env.d/env.history.09Feb2026_16_32_21
+s19(09Feb2026:16:32:21):  ncverilog testbench.v alu.v +define+I2 +access+rw 
+#e20(09Feb2026:16:33:50): source ./xcelium.d/env.d/env.history.09Feb2026_16_33_50
+s20(09Feb2026:16:33:50):  ncverilog testbench.v alu.v +define+I2 +access+rw 
+#e21(09Feb2026:16:34:13): source ./xcelium.d/env.d/env.history.09Feb2026_16_34_13
+s21(09Feb2026:16:34:13):  ncverilog testbench.v alu.v +define+I2 +access+rw 
+#e22(09Feb2026:16:34:32): source ./xcelium.d/env.d/env.history.09Feb2026_16_34_32
+s22(09Feb2026:16:34:32):  ncverilog testbench.v alu.v +define+I2 +access+rw 
+#e23(09Feb2026:16:34:51): source ./xcelium.d/env.d/env.history.09Feb2026_16_34_51
+s23(09Feb2026:16:34:51):  ncverilog testbench.v alu.v +define+I2 +access+rw 
+#e24(09Feb2026:16:43:18): source ./xcelium.d/env.d/env.history.09Feb2026_16_43_18
+s24(09Feb2026:16:43:18):  ncverilog testbench.v alu.v +define+I2 +access+rw 
+#e25(09Feb2026:16:48:24): source ./xcelium.d/env.d/env.history.09Feb2026_16_48_24
+s25(09Feb2026:16:48:24):  ncverilog testbench.v alu.v +define+I2 +access+rw 
+#e26(09Feb2026:16:57:28): source ./xcelium.d/env.d/env.history.09Feb2026_16_57_28
+s26(09Feb2026:16:57:28):  ncverilog testbench.v alu.v +define+I2 +access+rw 
+#e27(09Feb2026:16:58:31): source ./xcelium.d/env.d/env.history.09Feb2026_16_58_31
+s27(09Feb2026:16:58:31):  ncverilog testbench.v alu.v +define+I2 +access+rw 
+#e28(09Feb2026:16:58:59): source ./xcelium.d/env.d/env.history.09Feb2026_16_58_59
+s28(09Feb2026:16:58:59):  ncverilog testbench.v alu.v +define+I2 +access+rw 
+#e29(09Feb2026:16:59:13): source ./xcelium.d/env.d/env.history.09Feb2026_16_59_13
+s29(09Feb2026:16:59:13):  ncverilog testbench.v alu.v +define+I2 +access+rw 
+#e30(09Feb2026:23:38:59): source ./xcelium.d/env.d/env.history.09Feb2026_23_38_59
+s30(09Feb2026:23:38:59):  ncverilog testbench.v alu.v +define+I2 +access+rw 

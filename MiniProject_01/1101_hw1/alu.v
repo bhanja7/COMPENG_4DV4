@@ -18,7 +18,7 @@ reg         o_valid_w, o_valid_r;
 reg         o_overflow_w, o_overflow_r;
 // ---- Add your own wires and registers here if needed ---- //
 reg signed [23:0] result_long; // wire
-reg signed [11:0] accumulator; // register
+reg signed [23:0] accumulator; // register
 reg signed [23:0] sum_long; // wire
 
 
@@ -176,7 +176,7 @@ always@(posedge i_clk or negedge i_rst_n) begin
         o_data_r <= 0;
         o_overflow_r <= 0;
         o_valid_r <= 0;
-        accumulator <= 12'b0;
+        accumulator <= 24'b0;
     end else begin
         o_data_r <= o_data_w;
         o_overflow_r <= o_overflow_w;
@@ -185,7 +185,7 @@ always@(posedge i_clk or negedge i_rst_n) begin
         if(i_inst == 3'b011) begin
             accumulator <= sum_long;            
         end else begin
-            accumulator <= 12'b0;
+            accumulator <= 24'b0;
         end
     end
 end

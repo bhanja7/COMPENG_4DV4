@@ -137,7 +137,7 @@ always@(*) begin
             3'b110: begin // Mean
                 o_overflow_w = 1'b0;
                 
-                o_data_w = (i_data_a + i_data_b) >>> 2;
+                o_data_w = ($signed(i_data_a) + $signed(i_data_b)) >>> 1;
                 o_valid_w = 1'b1;
 
             end

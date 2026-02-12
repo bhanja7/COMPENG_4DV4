@@ -103,10 +103,15 @@ always@(*) begin
                 sum_long = result_long[16:5] + accumulator;
 
                 // overflow logic
-                if((result_long[23:17] != {7{result_long[16]}}) || (sum_long[23:12] != {12{sum_long[11]}})) begin
+                if((result_long[23:17] != {7{result_long[16]}})) begin
                     o_overflow_w = 1'b1;
+                    $display("result, overflow!");
+                end else if((sum_long[23:12] != {12{sum_long[11]}}))begin
+                    o_overflow_w = 1'b1;    
+                    $display("sum, overflow!"); 
                 end else begin
-                    o_overflow_w = 1'b0;     
+                    o_overflow_w = 1'b0; 
+                    $display("no overflow!"); 
                 end
 
                 // arithmetic logic
